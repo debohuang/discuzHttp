@@ -51,6 +51,8 @@ public class FetchMail {
             	getMail(account,pwd);
             	return null;
             }
+            
+            
 //            for(int i=1;i<=size;i++) {
 //                Message message = folder.getMessage(i);
 //                
