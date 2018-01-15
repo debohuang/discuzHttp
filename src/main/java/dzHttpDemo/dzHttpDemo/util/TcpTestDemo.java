@@ -20,9 +20,9 @@ public class TcpTestDemo {
 	private BufferedReader bufferedReader;
 	private BufferedWriter bufferedWriter;
 	public TcpTestDemo(String host, int port) {
-
+		//代理设置 http://b-l-east.iteye.com/blog/1199237
 		//以下地址是代理服务器的地址  
-//		Socket socket = new Socket("10.1.2.188", 80);  
+//		socket = new Socket("10.1.2.188", 80);  
 		//写与的内容就是遵循HTTP请求协议格式的内容，请求百度  
 //		socket.getOutputStream().write(new String("GET http://www.baidu.com/ HTTP/1.1\r\n\r\n").getBytes());  
 		
@@ -33,7 +33,7 @@ public class TcpTestDemo {
 	
 	public void sendGet() throws IOException
 	{
-		String path = "/forum.php";
+		String path = "http://127.0.0.1/forum.php";
 		SocketAddress dest = new InetSocketAddress(this.host, this.port);
 		
 		socket.setSoTimeout(2000); // 如果超过2000毫秒还没有数据，则抛出 SocketTimeoutException。解决socket阻塞问题
