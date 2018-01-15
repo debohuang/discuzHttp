@@ -20,11 +20,12 @@ public class TcpTestDemo {
 	private BufferedReader bufferedReader;
 	private BufferedWriter bufferedWriter;
 	public TcpTestDemo(String host, int port) {
-//        System.setProperty("http.proxySet", "true");
-//        System.setProperty("http.proxyHost", "127.0.0.1");
-//        System.setProperty("http.proxyPort",  "28080");
-//		Proxy proxy = new Proxy(Proxy.Type.HTTP,new InetSocketAddress("localhost", 28080));
-//		socket = new Socket(proxy);
+
+		//以下地址是代理服务器的地址  
+//		Socket socket = new Socket("10.1.2.188", 80);  
+		//写与的内容就是遵循HTTP请求协议格式的内容，请求百度  
+//		socket.getOutputStream().write(new String("GET http://www.baidu.com/ HTTP/1.1\r\n\r\n").getBytes());  
+		
 		socket = new Socket();
 		this.host = host;
 		this.port = port;
@@ -34,7 +35,10 @@ public class TcpTestDemo {
 	{
 		String path = "/forum.php";
 		SocketAddress dest = new InetSocketAddress(this.host, this.port);
+		
+		socket.setSoTimeout(2000); // 如果超过2000毫秒还没有数据，则抛出 SocketTimeoutException。解决socket阻塞问题
 		socket.connect(dest);
+		
 		OutputStreamWriter streamWriter = new OutputStreamWriter(socket.getOutputStream());
 		bufferedWriter = new BufferedWriter(streamWriter);
 		
@@ -46,9 +50,13 @@ public class TcpTestDemo {
 		BufferedInputStream streamReader = new BufferedInputStream(socket.getInputStream());
 		bufferedReader = new BufferedReader(new InputStreamReader(streamReader, "utf-8"));
 		String line = null;
-		while((line = bufferedReader.readLine())!= null)
-		{
-			System.out.println(line);
+		
+		try {
+			while ((line = bufferedReader.readLine()) != null) {
+				System.out.println(line);
+			} 
+		} catch (Exception e) { //超时异常不处理
+			
 		}
 		bufferedReader.close();
 		bufferedWriter.close();
@@ -97,7 +105,7 @@ public class TcpTestDemo {
 //			td.sendPost(); // send HTTP POST Request
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 	
