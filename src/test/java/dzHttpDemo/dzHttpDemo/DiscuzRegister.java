@@ -210,7 +210,6 @@ public class DiscuzRegister {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		System.out.println("------register start-------");
 		register();
-		
 		//邮件账号生成user.csv
 //		String aString="";
 //		for(int i=0;i<1000;i++) {
@@ -224,7 +223,6 @@ public class DiscuzRegister {
 //			
 //			logger1.error(aString+",123456,mail.ccyunbo.com");
 //		}
-		
 		
 		
 //		System.out.println(getStringRandom(5));

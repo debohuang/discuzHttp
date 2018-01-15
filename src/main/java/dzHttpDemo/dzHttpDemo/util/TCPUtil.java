@@ -79,6 +79,7 @@ public class TCPUtil {
 			bufferedWriter.write("\r\n");
 			bufferedWriter.flush();
 			
+			
 			/**
 			 * 接收TCP响应
 			 */

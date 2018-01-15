@@ -122,7 +122,7 @@ public class FetchMail {
 	}
 	
     public static void main(String[] args) throws IOException, InterruptedException {
-    	String url=getMail("2n04DZ@mail.ccyunbo.com","123456");
+    	String url=getMail("2ZL65DS@mail.ccyunbo.com","123456");
     	System.out.println(url);
     	
     }
