@@ -1,4 +1,4 @@
-package dzHttpDemo.dzHttpDemo;
+package dzHttpDemo.dzHttpDemo.httpcomponentsDemo;
 
 /*
  * ====================================================================
@@ -228,7 +228,7 @@ public class ClientConfiguration {
                 .setSocketTimeout(5000)
                 .setConnectTimeout(5000)
                 .setConnectionRequestTimeout(5000)
-                .setProxy(new HttpHost("myotherproxy", 8080))
+                .setProxy(new HttpHost("127.0.0.1", 28080))
                 .build();
             httpget.setConfig(requestConfig);
 
